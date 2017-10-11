@@ -36,7 +36,11 @@ app.config(function($routeProvider) {
         })
        
        
-       
+        .when("/visitday", {
+            templateUrl: "pages/visit/visitday.html",
+            controller: "visitdayCtrl"
+
+        })
       
 });
 
