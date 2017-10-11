@@ -1,0 +1,76 @@
+<ol class="breadcrumb">
+    <li>
+        <a href="#/">Home</a>
+    </li>
+    <li class="active">รายงานการเข้ารับบริการ</li>
+</ol>
+
+
+<div class="container" ng-controller="visitCtrl">
+
+<div class="jumbotron">
+    <div class="container">
+        <h3>รายงานผู้เข้ารับบริการ แยกรายปีงบประมาณ</h3>
+        
+
+
+    <form class="form-inline">
+        <div class="form-group">
+            <label for="sel1">ปีงบประมาณ :</label>
+            <select class="form-control"  ng-model="form.bgyear">
+              <option  ng-repeat="d in bgData" value="{{d.bg_id}}">{{d.bg_id}}</option>
+              
+            </select>
+          </div>
+        <button class="btn btn-primary" ng-click="getvisit(form)">Submit</button>
+    </form>
+
+</div>
+</div>    
+    <table class="table table-bordered table-hover">
+        <thead >
+            <tr class="success">
+                <th>ที่</th>
+                <th>รหัส</th>
+                <th>หน่วยบริการ</th>
+                <th>ต.ค.</th>
+                <th>พ.ย.</th>
+                <th>ธ.ค.</th>
+                <th>ม.ค.</th>
+                <th>ก.พ.</th>
+                <th>มี.ค.</th>
+                <th>เม.ย.</th>
+                <th>พ.ค.</th>
+                <th>มิ.ย.</th>
+                <th>ก.ค.</th>
+                <th>ส.ค.</th>
+                <th>ก.ย.</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="d in visitData">
+                <td>{{$index + 1}}</td>
+                <td>{{d.hospcode}}</td>
+                <td>{{d.hospname}}</td>
+                <td>{{d.m10}}</td>
+                <td>{{d.m11}}</td>
+                <td>{{d.m12}}</td>
+                <td>{{d.m1}}</td>
+                <td>{{d.m2}}</td>
+                <td>{{d.m3}}</td>
+                <td>{{d.m4}}</td>
+                <td>{{d.m5}}</td>
+                <td>{{d.m6}}</td>
+                <td>{{d.m7}}</td>
+                <td>{{d.m8}}</td>
+                <td>{{d.m9}}</td>
+                
+               <!-- <td align="center">{{opdEclaimData|sumByKey:''|currency : ""}}</td>-->
+            </tr>
+        </tbody>
+    </table>
+    
+
+    </div>
+

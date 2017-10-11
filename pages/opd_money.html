@@ -1,0 +1,104 @@
+<ol class="breadcrumb">
+    <li>
+        <a href="#/">Home</a>
+    </li>
+    <li class="active">รายงานค่ารักษาพยาบาล แยกตามสิทธิ</li>
+</ol>
+
+
+<div class="container" ng-controller="opdMoneyCtrl">
+
+
+    <form class="form-inline">
+        <div class="form-group">
+            <label for="exampleInputName2">จากวันที่</label>
+            <input type="date" class="form-control" id="exampleInputName2" ng-model="form.date1">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail2">ถึงวันที่</label>
+            <input type="date" class="form-control" id="exampleInputEmail2" ng-model="form.date2">
+        </div>
+
+        <div class="form-group">
+            <label for="sel1">    สิทธิ:</label>
+            <select class="form-control" ng-model="form.pttype">
+    <option ng-repeat="p in pttype" value="{{p.pttype}}" >{{p.name}}</option>
+   
+  </select>
+        </div>
+        <button class="btn btn-primary" ng-click="report_opd(form)">Submit</button>
+
+
+
+    </form>
+
+    </br>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">รายงานค่ารักษาพยาบาลผู้ป่วยนอก โรงพยาบาลแก้งสนามนาง ระหว่าง วันที่ {{opdData[0].tdate1}} ถึงวันที่ {{opdData[0].tdate2}} </h3>
+        </div>
+        <div class="panel-body">
+
+            <button ng-click="exportData()">Export</button>
+            </br>
+
+
+            <div id="exportable">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <td colspan="18">รายงานค่ารักษาพยาบาลผู้ป่วยนอก โรงพยาบาลแก้งสนามนาง ระหว่าง วันที่ {{opdData[0].tdate1}} ถึงวันที่ {{opdData[0].tdate2}} </td>
+                        </tr>
+                        <tr>
+                            <td align="center">ที่</td>
+                            <td align="center">HN</td>
+                            <td align="center">ชื่อ สกุล</td>
+                            <td align="center">เพศ</td>
+                            <td align="center">อายุ</td>
+                            <td>pdx</td>
+                            <td>ค่าบริการโลหิต</td>
+                            <td>ค่าบริการชันสูตร</td>
+                            <td>ค่าบริการรังสี</td>
+                            <td>ค่าตรวจวินิจฉัยอื่น ๆ</td>
+                            <td>ค่าอุปกรณ์เครื่ืองมือ
+
+                                <td>ค่าทำหัตถการ และวิสัญญี</td>
+                                <td>ค่าบริการทางพยาบาล</td>
+                                <td>ค่าบริการทางทันตกรรม</td>
+                                <td>ค่าบริการทางกายภาพบำบัดและทางเวชกรรมฟื้นฟู</td>
+                                <td>ค่าบริการฝังเข็ม</td>
+                                <td>ค่าบริการอื่น ๆ </td>
+                                <td>ค่ายา </td>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="d in reportData">
+                            <td align="center">{{$index + 1}}</td>
+                            <td align="left">{{d.hn}}</td>
+                            <td align="center">{{d.ptname}}</td>
+                            <td align="center">{{d.sex}}</td>
+                            <td>{{d.age_y}}</td>
+                            <td>{{d.pdx}}</td>
+                            <td>{{d.inc02}}</td>
+                            <td>{{d.inc01}}</td>
+                            <td>{{d.inc04}}</td>
+                            <td>{{d.inc02}}</td>
+                            <td>{{d.inc02}}</td>
+                            <td>{{d.inc06}}</td>
+                            <td> </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>{{d.inc14}}</td>
+                            <td>{{d.inc_drug}}</td>
+
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

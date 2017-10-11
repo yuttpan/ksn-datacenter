@@ -1,0 +1,68 @@
+<ol class="breadcrumb">
+    <li>
+        <a href="#/hosxp">ย้อนกลับ</a>
+    </li>
+    <li class="active">รายละเอียดลูกหนี้ผู้ป่วยนอก</li>
+</ol>
+
+
+<div class="container" ng-controller="opdDetailCtrl">
+
+
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">รายงานลูกหนี้รายคน จากโปรแกรม Hosxp ระหว่าง วันที่ {{opdDatadetail[0].date1}} ถึงวันที่ {{opdDatadetail[0].date2}} </h3>
+        </div>
+        <div class="panel-body">
+
+            <button ng-click="exportData()">Export</button>
+            </br>
+
+
+            <div id="exportable">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <td colspan="5">รายงานลูกหนี้ รพ.บัวใหญ่ ] ลูกหนี้ {{opdDatadetail[0].debt_name}} ระหว่าง วันที่ {{opdDatadetail[0].tdate1}} ถึงวันที่ {{opdDatadetail[0].tdate2}} </td>
+                        </tr>
+                        <tr>
+                            <td align="center">ที่</td>
+
+                            <td align="center">HN</td>
+                            <td align="center">AN</td>
+                            <td align="center">ชื่อผู้ป่วย</td>
+
+                            <td align="center">วันทีรักษา</td>
+                            <td align="center">วันทีจำหน่าย</td>
+                            <td align="center">ค่ารักษา</td>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="d in opdDatadetail">
+                            <td align="center">{{$index + 1}}</td>
+                            <td align="center">{{d.hn}}</td>
+                            <td align="center">{{d.an}}</td>
+                            <td align="left">{{d.ptname}}</td>
+                            <td align="center">{{d.vstdate}}</td>
+                            <td align="center">{{d.dchdate}}</td>
+
+                            <td align="right">{{d.income|currency : ""}}</td>
+
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="6"></td>
+
+
+                            <td align="right">{{opdDatadetail|sumByKey:'income'|currency : ""}}</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,74 @@
+<ol class="breadcrumb">
+    <li>
+        <a href="#/">Home</a>
+    </li>
+    <li class="active">ลูหหนี้ Hosxp</li>
+</ol>
+
+
+<div class="container" ng-controller="ipdEclaimCtrl">
+
+
+    <form class="form-inline">
+        <div class="form-group">
+            <label for="exampleInputName2">จากวันที่</label>
+            <input type="date" class="form-control" id="exampleInputName2" ng-model="form.date1">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail2">ถึงวันที่</label>
+            <input type="date" class="form-control" id="exampleInputEmail2" ng-model="form.date2">
+        </div>
+        <button class="btn btn-primary" ng-click="ipdeclaim(form)">Submit</button>
+    </form>
+
+    </br>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">รายงานลูกหนี้ผู้ป่วยในโรงพยาบาลบัวใหญ่ จากโปรแกรม ECLAIM ระหว่าง วันที่ {{ipdEclaimData[0].tdate1}} ถึงวันที่ {{ipdEclaimData[0].tdate2}} </h3>
+        </div>
+        <div class="panel-body">
+
+            <button ng-click="exportData()">Export</button>
+            </br>
+
+
+            <div id="exportable">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <td colspan="5">รายงานลูกหนี้ผู้ป่วยในโรงพยาบาลแก้งสนามนาง จากโปรแกรม ECLAIM ระหว่าง วันที่ {{ipdEclaimData[0].tdate1}} ถึงวันที่ {{ipdEclaimData[0].tdate2}} </td>
+                        </tr>
+                        <tr>
+                            <td align="center">ที่</td>
+                            <td align="center">ลูกหนี้สืทธิ</td>
+                            <td align="center">จำนวนคน</td>
+                            <td align="center">จำนวนครั้ง</td>
+                            <td align="center">จำนวนเงิน</td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="d in ipdEclaimData">
+                            <td align="center">{{$index + 1}}</td>
+                            <td align="left">{{d.MAININSCL}}</td>
+                            <td align="center">{{d.hn}}</td>
+                            <td align="center">{{d.vn}}</td>
+                            <td align="right">{{d.income | currency : ""}}</td>
+                            <td align="right"><a href="#/ipdEclaimdetail/{{d.date1}}/{{d.date2}}/{{d.MAININSCL}}" class="button">รายละเอียด</a></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td align="center">{{ipdEclaimData|sumByKey:'hn'|currency : ""}}</td>
+                            <td align="center">{{ipdEclaimData|sumByKey:'vn'|currency : ""}}</th>
+                                <td align="right">{{ipdEclaimData|sumByKey:'income'|currency : ""}}</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

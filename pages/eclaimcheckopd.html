@@ -1,0 +1,67 @@
+<ol class="breadcrumb">
+    <li>
+        <a href="#/">Home</a>
+    </li>
+    <li class="active">ตรวจสอบการบันทึก ECLAIM</li>
+</ol>
+
+
+<div class="container" ng-controller="eclaimcheckCtrl">
+
+
+    <form class="form-inline">
+        <div class="form-group">
+            <label for="exampleInputName2">จากวันที่</label>
+            <input type="date" class="form-control" id="exampleInputName2" ng-model="form.date1">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail2">ถึงวันที่</label>
+            <input type="date" class="form-control" id="exampleInputEmail2" ng-model="form.date2">
+        </div>
+        <button class="btn btn-primary" ng-click="checkclaim(form)">Submit</button>
+    </form>
+
+    </br>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">รายงานการบันทึกข้อมูลผู้ป่วยใน ลงโปรแกรม ECLAIM ระหว่าง วันที่ {{checkEclaimData[0].tdate1}} ถึงวันที่ {{checkEclaimData[0].tdate2}} </h3>
+        </div>
+        <div class="panel-body">
+
+            <button ng-click="exportData()">Export</button>
+            </br>
+
+
+            <div id="exportable">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <td colspan="5">รายงานการบันทึกข้อมูลผู้ป่วยใน ลงโปรแกรม ECLAIM ระหว่าง วันที่ {{checkEclaimData[0].tdate1}} ถึงวันที่ {{checkEclaimData[0].tdate2}} </td>
+                        </tr>
+                        <tr>
+                            <td align="center">ที่</td>
+                            <td align="center">AN</td>
+                            <td align="center">สิทธิ</td>
+                            <td align="center">วันที่จำหน่าย</td>
+                            <td align="center">วันที่บันทึก</td>
+                            <td align="center">จำนวนวัน</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="d in checkEclaimData">
+                            <td align="center">{{$index + 1}}</td>
+                            <td align="left">{{d.anhos}}</td>
+                            <td align="center">{{d.pttype}}</td>
+                            <td align="center">{{d.dchdate}}</td>
+                            <td align="center">{{d.dateadj}}</td>
+                            <td align="center">{{d.dayrecord}}</td>
+
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,63 @@
+
+<div class="container" ng-controller="providerCtrl">
+    
+    
+    <div class="jumbotron">
+        <div class="container">
+            <h3>ตรวจสอบข้อมูลผู้ให้บริการ(Provider)</h3>
+            <form class="form-inline">
+                    <div class="form-group">
+                            <label for="sel1">หน่วยบริการ :</label>
+                            <select class="form-control"  ng-model="form.hospcode" ng-change="myFunc(form)">
+                              <option  ng-repeat="d in hospcodeData" value="{{d.hospcode}}">{{d.hospname}}</option>
+                              
+                            </select>
+                          </div>
+
+                </form>
+        </div>
+    </div>
+    
+    <div class="panel panel-danger">
+          <div class="panel-heading">
+                <h3 class="panel-title">รายชื่อผู้ให้บริการ</h3>
+          </div>
+          <div class="panel-body">
+                
+                <table class="table table-bordered table-hover ">
+                    <thead>
+                        <tr>
+                            <th>ที่</th>
+                            <th>ชื่อ</th>
+                            <th>pname</th>
+                            <th>fname</th>
+                            <th>lname</th>
+                            <th>cid</th>
+                            <th>startdate</th>
+                            <th>sex</th>
+                            <th>birthdate</th>
+                            <th>provider_code</th>
+                            <th>ตำแหน่ง</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr  ng-repeat="d in providerData">
+                            <td>{{$index + 1}}</td>
+                            <td>{{d.name}}</td>
+                            <td>{{d.pname}}</td>
+                            <td>{{d.fname}}</td>
+                            <td>{{d.lname}}</td>
+                            <td>{{d.cid}}</td>
+                            <td>{{d.start_date}}</td>
+                            <td>{{d.sex}}</td>
+                            <td>{{d.birth_date}}</td>
+                            <td>{{d.provider_type_code}}</td>
+                            <td>{{d.provider_type_name}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+          </div>
+    </div>
+    
+</div>

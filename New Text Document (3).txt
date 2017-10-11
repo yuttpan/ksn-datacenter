@@ -1,0 +1,1 @@
+npm install --save angular-google-chart@1.0.0-beta.1

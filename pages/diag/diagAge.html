@@ -1,0 +1,72 @@
+
+<div class="container" ng-controller="diagAgeCtrl">
+    
+
+<div class="page-header">
+  <h3>อันดับโรคตามกลุ่มวัย</h3>
+  <form class="form-inline">
+        <div class="form-group">
+            <label for="sel1">กลุ่มอายุ :</label>
+            <select class="form-control"  ng-model="form.agegroup">
+              <option   value="1">กลุ่มเด็กปฐมวัย 0 - 5 ปี</option>
+              <option   value="2">กลุ่มเด็กวัยเรียน 6 - 14 ปี</option>
+             <option   value="3">กลุ่มวัยรุ่น 15 - 20 ปี</option>
+             <option   value="4">กลุ่มวัยทำงาน 21 - 59 ปี</option>
+             <option   value="5">กลุ่มวัยผู้สูงอายุ 60 ปี ขึ้นไป</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+                <label for="sel1">หน่วยบริการ :</label>
+                <select class="form-control"  ng-model="form.hospcode">
+                  <option  ng-repeat="d in hospcodeData" value="{{d.hospcode}}">{{d.hospname}}</option>
+                  
+                </select>
+              </div>
+          
+              <div class="form-group">
+                    <label for="sel1">ปีงบประมาณ :</label>
+                    <select class="form-control"  ng-model="form.bgyear">
+                      <option  ng-repeat="d in bgData" value="{{d.bg_id}}">{{d.bg_id}}</option>
+                      
+                    </select>
+                  </div>
+        <button class="btn btn-primary" ng-click="getdiagage(form)">Submit</button>
+    </form>
+</div>
+
+
+
+<div class="panel panel-info">
+      <div class="panel-heading">
+            <h3 class="panel-title">{{hospname}}</h3>
+      </div>
+      <div class="panel-body">
+           
+           <table class="table table-striped table-hover table-bordered">
+               <thead class="text-center" >
+                   <tr>
+                       <th class="text-center" >ที่</th>
+                       <th class="text-center">รหัสโรค</th>
+                       <th class="text-center">ชื่อโรค</th>
+                       <th class="text-center"> จำนวนครั้ง</th>
+                       
+                   </tr>
+               </thead>
+               <tbody>
+                   <tr ng-repeat="d in vData">
+                       <td align="center">{{$index + 1}}</td>
+                       <td>{{d.icd10 }}</td>
+                       <td>{{d.name }}</td>
+                       <td  align="center">{{d.vn |number}}</td>
+
+                   </tr>
+               </tbody>
+           </table>
+           
+      </div>
+</div>
+
+
+</div>
+
